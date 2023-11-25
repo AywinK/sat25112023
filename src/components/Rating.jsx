@@ -7,7 +7,9 @@ const Rating = () => {
 
   const handleClick = (e) => {
     console.log(e.target.parentNode.classList[0], e.target.id);
-    setRating(() => Number(e.target.id));
+    if ([...e.target.classList].includes("star")) {
+      setRating(() => Number(e.target.id));
+    }
   };
 
   return (
