@@ -6,6 +6,7 @@
 }
 
 .rating-container {
+  padding-left: 15px;
   min-width: 100px;
   display: flex;
   transition-duration: 0.6s;

@@ -9,9 +9,13 @@
 }
 
 .product-container {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 10px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(54, 51, 51);
+  border-radius: 16px;
+  padding: 10px;
 }
 
 .image {
@@ -22,37 +26,39 @@
 }
 
 .price {
-    align-self: flex-start;
-    padding: 5px;
-    padding-left: 50px;
+  align-self: flex-start;
+  padding: 5px;
+  padding-left: 50px;
 }
 
 .price {
-    &::before {
-        content: "£";
-        margin-right: 5px;
-        font-size: 0.7em;
-        position: relative;
-        bottom: 12.5px;
-    }
+  &::before {
+    content: "£";
+    margin-right: 5px;
+    font-size: 0.7em;
+    position: relative;
+    bottom: 12.5px;
+  }
 }
 
 .price-fraction {
-    position: relative;
-    margin-left: 3px;
-    bottom: 12.5px;
-    font-size: 0.7em;
+  position: relative;
+  margin-left: 3px;
+  bottom: 12.5px;
+  font-size: 0.7em;
 }
 
 .name {
-    margin-top: -15px;
-    padding: 5px;
-    font-size: 0.65em;
-    text-align: start;
+  margin-top: -15px;
+  padding: 5px;
+  padding-left: 15px;
+  font-size: 0.65em;
+  text-align: start;
 }
 
 .category {
-    font-size: 0.5em;
-    text-align: start;
-    padding: 5px;
+  font-size: 0.5em;
+  text-align: start;
+  padding: 5px;
+  padding-left: 16.5px;
 }

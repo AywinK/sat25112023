@@ -1,21 +1,20 @@
 import { Rating } from "./Rating";
 import "./ProductCard.css";
 
-const ProductCard = () => {
+
+const ProductCard = ({ imageUrl, name, price, rating, categoryArr }) => {
   return (
     <div className="product-container">
       <div className="image-container">
-        <img
-          className="image"
-          src="https://m.media-amazon.com/images/I/81Fyh2mrw4L._SL1500_.jpg"
-        />
-        <p className="name">Harry Potter and the Philosopher's Stone: 1/7</p>
+        <img className="image" src={imageUrl} />
+        <p className="name">{name}</p>
       </div>
       <p className="price">
-        9<span className="price-fraction">99</span>
+        {String(price).split(".")[0]}
+        <span className="price-fraction">{String(price).split(".")[1]}</span>
       </p>
-      <Rating />
-      <p className="category">Drama, Thriller</p>
+      <Rating rating={rating} />
+      <p className="category">{categoryArr.join(", ")}</p>
     </div>
   );
 };

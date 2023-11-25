@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./Rating.css";
 
-const Rating = () => {
-  const [rating, setRating] = useState(5);
+const Rating = (props) => {
+  const [rating, setRating] = useState(props.rating || 0);
   const emptyArr = [0, 0, 0, 0, 0];
 
   const handleClick = (e) => {
@@ -18,6 +18,7 @@ const Rating = () => {
         style={{
           display: "flex",
           rowGap: "5px",
+          paddingLeft: "15px",
         }}
         onClick={handleClick}
       >
