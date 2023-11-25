@@ -6,12 +6,19 @@
 }
 
 .rating-container {
-  min-width: 300px;
+  min-width: 100px;
   display: flex;
+  transition-duration: 0.6s;
+  filter: hue-rotate(-40deg);
   /* flex-direction: row-reverse; */
   /* grid-template-rows: 1fr;
   grid-template-columns: repeat(5, 1fr);
   overflow-x: hidden; */
+}
+
+.rating-container:hover {
+  scale: 1.005;
+  filter: hue-rotate(-10deg);
 }
 
 .rating-gray {
@@ -38,9 +45,17 @@
 }
 
 .star {
-  min-width: 5ch;
-  min-height: 5ch;
+  margin-right: 5px;
+  position: relative;
+  top: 5px;
+  min-width: 1.5ch;
+  min-height: 1ch;
   background-image: url("../assets/images/star.png");
   background-size: contain;
   background-repeat: repeat-x;
+  cursor: pointer;
+
+  &:hover {
+    filter: hue-rotate(-50deg);
+  }
 }

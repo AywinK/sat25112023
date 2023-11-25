@@ -1,10 +1,10 @@
-import { Rating } from "./components/Rating";
 import "./App.css";
+import { ProductCard } from "./components/ProductCard";
 
 function App() {
   return (
     <>
-      <Rating />
+      <ProductCard />
     </>
   );
 }

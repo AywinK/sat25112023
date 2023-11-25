@@ -17,15 +17,18 @@ const Rating = () => {
       <div
         style={{
           display: "flex",
+          rowGap: "5px",
         }}
         onClick={handleClick}
       >
         <p
           style={{
             margin: "10px",
+            marginLeft: "3px",
+            fontSize: "0.8rem",
           }}
         >
-          Rating: <span>{rating}</span>
+          Rating: <span style={{ fontSize: "0.8rem" }}>{rating}</span>
         </p>
         <div className="rating-container">
           {emptyArr.map((el, i) => (
