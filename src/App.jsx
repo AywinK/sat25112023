@@ -1,13 +1,12 @@
-
-import './App.css'
+import { Rating } from "./components/Rating";
+import "./App.css";
 
 function App() {
-
   return (
     <>
-test
+      <Rating />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
