@@ -2,7 +2,7 @@ import { Rating } from "./Rating";
 import "./ProductCard.css";
 import { useState } from "react";
 
-const ProductCard = ({ imageUrl, name, price, rating, categoryArr }) => {
+const ProductCard = ({ id, imageUrl, name, price, rating, categoryArr }) => {
   const [reviewRating, setRewviewRating] = useState(rating || 0);
 
   const handleReviewRatingChange = (rating) => {

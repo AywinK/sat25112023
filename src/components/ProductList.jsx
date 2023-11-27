@@ -1,6 +1,7 @@
 import { ProductCard } from "./ProductCard";
 
 const testObj = {
+  id: 1,
   imageUrl: "https://m.media-amazon.com/images/I/81Fyh2mrw4L._SL1500_.jpg",
   name: "Harry Potter and the Philosopher's Stone: 1/7",
   price: 9.99,
@@ -10,7 +11,7 @@ const testObj = {
 
 const testArr = Array(10).fill(testObj);
 
-const ProductList = () => {
+const ProductList = ({ productsData }) => {
   const stylesObj = {
     display: "flex",
     gap: "10px",
@@ -21,9 +22,9 @@ const ProductList = () => {
   };
   return (
     <div style={stylesObj}>
-      {testArr.map((data, i) => (
+      {productsData.map((data) => (
         <ProductCard
-          key={i}
+          key={data.id}
           imageUrl={data.imageUrl}
           name={data.name}
           price={data.price}

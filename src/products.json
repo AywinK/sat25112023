@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://m.media-amazon.com/images/I/81Fyh2mrw4L._SL1500_.jpg",
+    "name": "Harry Potter and the Philosopher's Stone: 1/7",
+    "price": 9.99,
+    "rating": 3,
+    "categoryArr": ["Drama", "Thriller"]
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://m.media-amazon.com/images/I/61r4tYVsRVL._SL1304_.jpg",
+    "name": "Clean Architecture: A Craftsman's Guide to Software Structure and Design: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series)",
+    "price": 26.99,
+    "rating": 4,
+    "categoryArr": ["Technology"]
+  }
+]
