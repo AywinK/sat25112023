@@ -14,5 +14,13 @@
     "price": 26.99,
     "rating": 4,
     "categoryArr": ["Technology"]
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg",
+    "name": "Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin) (Robert C. Martin Series)",
+    "price": 36.89,
+    "rating": 5,
+    "categoryArr": ["Technology"]
   }
 ]

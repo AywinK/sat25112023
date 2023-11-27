@@ -19,11 +19,13 @@ const ProductCard = ({ id, imageUrl, name, price, rating, categoryArr }) => {
         {String(price).split(".")[0]}
         <span className="price-fraction">{String(price).split(".")[1]}</span>
       </p>
-      <Rating
-        reviewRatingChangeHandler={handleReviewRatingChange}
-        rating={reviewRating}
-      />
-      <p className="category">{categoryArr.join(", ")}</p>
+      <div className="bottom-container">
+        <Rating
+          reviewRatingChangeHandler={handleReviewRatingChange}
+          rating={reviewRating}
+        />
+        <p className="category">{categoryArr.join(", ")}</p>
+      </div>
     </div>
   );
 };
