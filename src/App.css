@@ -1,4 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 1.5rem;
+  color: rgb(205, 187, 187);
+  /* border: 0.1rem solid red; */
+}
+
 #root {
+  /* display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: space-evenly; */
+  min-height: 100vh;
   min-width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -8,10 +23,10 @@
 }
 
 header > button {
-height: 60px;
-font-size: 0.7em;
-padding: 10px;
-padding-top: 1px;
+  height: 60px;
+  font-size: 0.7em;
+  padding: 10px;
+  padding-top: 1px;
 }
 
 /* .logo {

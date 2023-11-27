@@ -12,6 +12,7 @@ const Footer = () => {
         alignItems: "center",
         marginTop: "20px",
         padding: "5px",
+        flexWrap: "wrap",
       }}
     >
       <FooterLogo />
