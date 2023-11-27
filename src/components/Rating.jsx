@@ -1,14 +1,13 @@
 import { useState } from "react";
 import "./Rating.css";
 
-const Rating = (props) => {
-  const [rating, setRating] = useState(props.rating || 0);
+const Rating = ({rating, reviewRatingChangeHandler}) => {
   const emptyArr = [0, 0, 0, 0, 0];
 
   const handleClick = (e) => {
     console.log(e.target.parentNode.classList[0], e.target.id);
     if ([...e.target.classList].includes("star")) {
-      setRating(() => Number(e.target.id));
+      reviewRatingChangeHandler(Number(e.target.id));
     }
   };
 
