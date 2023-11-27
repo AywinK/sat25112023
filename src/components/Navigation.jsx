@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <nav>
-      <ul></ul>
+      <ul>
+        <li>
+          <Link>Home</Link>
+        </li>
+        <li>
+          <Link>Basket</Link>
+        </li>
+      </ul>
     </nav>
   );
 };
