@@ -11,6 +11,7 @@ const Footer = () => {
         justifyContent: "space-around",
         alignItems: "center",
         marginTop: "20px",
+        marginBottom: "20px",
         padding: "5px",
         flexWrap: "wrap",
       }}
