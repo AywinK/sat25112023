@@ -3,14 +3,24 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <nav>
-      <ul>
+      <ul
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          listStyle: "none",
+          gap: "20px",
+        }}
+      >
         <li>
-          <Link>Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link>Basket</Link>
+          <Link to="/basket">Basket</Link>
         </li>
       </ul>
     </nav>
   );
 };
+
+export { Navigation };
