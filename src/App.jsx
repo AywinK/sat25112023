@@ -11,7 +11,21 @@ function App() {
   const [basket, setBasket] = useState([]);
 
   const basketClickHandler = (e, quantity) => {
-    console.log(e.target.value);
+    const updatedItemObj = {
+      id: Number(e.target.value),
+      quantity: quantity,
+    };
+    setBasket((prev) =>
+      prev.reduce((acc, el) => {
+        if (el.id === updatedItemObj.id) {
+          acc.push(updatedItemObj);
+          return acc;
+        }
+        acc.push(el);
+        return acc;
+      }, [])
+    );
+    console.log(basket);
     console.log(`added to basket, id: ${e.target.value}, ${quantity}`);
   };
 
