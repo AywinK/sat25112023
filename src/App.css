@@ -29,6 +29,16 @@ header > button {
   padding-top: 1px;
 }
 
+.socialIcon {
+  scale: 1.15;
+  margin-bottom: 10px;
+  transition-duration: 3.6s;
+}
+
+.socialIcon:hover {
+  scale: 1.25;
+}
+
 /* .logo {
   height: 6em;
   padding: 1.5em;

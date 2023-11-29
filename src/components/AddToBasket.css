@@ -1,0 +1,36 @@
+.addToBasketContainer {
+  margin-top: 15px;
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  > .plusMinusBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 50px;
+    max-width: 75px;
+    height: 50px;
+    padding: 5px;
+  }
+
+  > .addBtn {
+    flex-grow: 3;
+    color: black;
+    border-radius: 100000rem;
+    background-color: rgb(255, 217, 0);
+    filter: brightness(-10);
+    font-weight: 500;
+    padding: 10px;
+    transition-duration: 1.8s;
+    font-size: 0.6em;
+  }
+}
+
+.addBtn:hover {
+    background-color: rgb(255, 183, 0);
+}

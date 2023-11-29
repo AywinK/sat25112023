@@ -13,13 +13,13 @@ const Socials = () => {
       }}
     >
       <a href="#">
-        <FacebookIcon fontSize="large" />
+        <FacebookIcon className="socialIcon" fontSize="large" />
       </a>
       <a href="#">
-        <TwitterIcon fontSize="large" />
+        <TwitterIcon className="socialIcon" fontSize="large" />
       </a>
       <a href="#">
-        <InstagramIcon fontSize="large" />
+        <InstagramIcon className="socialIcon" fontSize="large" />
       </a>
     </div>
   );

@@ -1,8 +1,17 @@
 import { Rating } from "./Rating";
 import "./ProductCard.css";
 import { useState } from "react";
+import { AddToBasket } from "./AddToBasket";
 
-const ProductCard = ({ id, imageUrl, name, price, rating, categoryArr }) => {
+const ProductCard = ({
+  productID,
+  imageUrl,
+  name,
+  price,
+  rating,
+  categoryArr,
+  handleBasketClick,
+}) => {
   const [reviewRating, setRewviewRating] = useState(rating || 0);
 
   const handleReviewRatingChange = (rating) => {
@@ -25,6 +34,10 @@ const ProductCard = ({ id, imageUrl, name, price, rating, categoryArr }) => {
           rating={reviewRating}
         />
         <p className="category">{categoryArr.join(", ")}</p>
+        <AddToBasket
+          handleBasketClick={handleBasketClick}
+          productID={productID}
+        />
       </div>
     </div>
   );

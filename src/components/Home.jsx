@@ -1,11 +1,14 @@
 import { ProductList } from "./ProductList";
 import productsData from "../products.json";
 
-const Home = () => {
+const Home = ({ handleBasketClick }) => {
   return (
     <div>
       <h1>Home</h1>
-      <ProductList productsData={productsData} />
+      <ProductList
+        handleBasketClick={handleBasketClick}
+        productsData={productsData}
+      />
     </div>
   );
 };

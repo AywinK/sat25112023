@@ -11,7 +11,7 @@ const testObj = {
 
 const testArr = Array(10).fill(testObj);
 
-const ProductList = ({ productsData }) => {
+const ProductList = ({ productsData, handleBasketClick }) => {
   const stylesObj = {
     display: "flex",
     gap: "10px",
@@ -25,11 +25,13 @@ const ProductList = ({ productsData }) => {
       {productsData.map((data) => (
         <ProductCard
           key={data.id}
+          productID={data.id}
           imageUrl={data.imageUrl}
           name={data.name}
           price={data.price}
           rating={data.rating}
           categoryArr={data.categoryArr}
+          handleBasketClick={handleBasketClick}
         />
       ))}
     </div>
