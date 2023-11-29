@@ -15,16 +15,20 @@ function App() {
       id: Number(e.target.value),
       quantity: quantity,
     };
-    setBasket((prev) =>
-      prev.reduce((acc, el) => {
-        if (el.id === updatedItemObj.id) {
-          acc.push(updatedItemObj);
+    setBasket((prev) => {
+      if (prev.filter((obj) => obj.id === updatedItemObj.id).length) {
+        const updatedArr = prev.reduce((acc, el) => {
+          if (el.id === updatedItemObj.id) {
+            acc.push(updatedItemObj);
+            return acc;
+          }
+          acc.push(el);
           return acc;
-        }
-        acc.push(el);
-        return acc;
-      }, [])
-    );
+        }, []);
+        return updatedArr;
+      }
+      return [...prev, updatedItemObj];
+    });
     console.log(basket);
     console.log(`added to basket, id: ${e.target.value}, ${quantity}`);
   };
