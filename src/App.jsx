@@ -5,7 +5,7 @@ import { Navigation } from "./components/Navigation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Basket } from "./components/Basket";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [basket, setBasket] = useState([]);
@@ -19,7 +19,10 @@ function App() {
       if (prev.filter((obj) => obj.id === updatedItemObj.id).length) {
         const updatedArr = prev.reduce((acc, el) => {
           if (el.id === updatedItemObj.id) {
-            acc.push(updatedItemObj);
+            acc.push({
+              id: el.id,
+              quantity: el.quantity + updatedItemObj.quantity,
+            });
             return acc;
           }
           acc.push(el);
@@ -29,9 +32,12 @@ function App() {
       }
       return [...prev, updatedItemObj];
     });
-    console.log(basket);
     console.log(`added to basket, id: ${e.target.value}, ${quantity}`);
   };
+
+  useEffect(() => {
+    console.log(basket);
+  });
 
   return (
     <Router>
