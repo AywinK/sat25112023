@@ -5,17 +5,10 @@ const AddToBasket = ({ handleBasketClick, productID }) => {
   const [inputVal, setInputVal] = useState(0);
 
   const handleInputChange = (e) => {
-    console.log(e);
-    if (!isNaN(Number(e.target.value))) {
-      setInputVal((prev) => {
-        if (prev < 10) {
-          return Number(e.target.value) || 0;
-        } else {
-          return prev;
-        }
-      });
+    if (Number(e.target.value) > 0 && Number(e.target.value) < 100) {
+      setInputVal(() => Number(e.target.value));
     } else {
-      setInputVal(() => 0);
+      setInputVal(0)
     }
   };
 
@@ -33,7 +26,7 @@ const AddToBasket = ({ handleBasketClick, productID }) => {
       </button>
       <input
         className="plusMinusBtn"
-        type="text"
+        type="number"
         value={inputVal}
         onChange={handleInputChange}
       />
