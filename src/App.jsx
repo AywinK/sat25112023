@@ -5,6 +5,8 @@ import { Navigation } from "./components/Navigation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Basket } from "./components/Basket";
+import { ProductList } from "./components/ProductList";
+import productsData from "./products.json";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -43,12 +45,16 @@ function App() {
     <Router>
       <Header />
       <Navigation />
-      {/* <ProductList productsData={productsData} /> */}
       <Routes>
         <Route
           path="/"
           exact
-          element={<Home handleBasketClick={basketClickHandler} />}
+          element={<Home>
+            <ProductList
+              handleBasketClick={basketClickHandler}
+              productsData={productsData}
+            />
+          </Home>}
         />
         <Route path="/basket" exact element={<Basket basket={basket} />} />
       </Routes>
