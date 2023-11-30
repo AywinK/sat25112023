@@ -37,9 +37,19 @@ function App() {
     console.log(`added to basket, id: ${e.target.value}, ${quantity}`);
   };
 
+  const checkIfBasketQuantityIsZero = basket.reduce((acc, el) => {
+    if (el.quantity > 0) {
+      acc.push(el);
+    }
+    return acc;
+  }, []).length;
+
   useEffect(() => {
-    console.table(basket);
-  });
+    setBasket(basket => basket.filter(product => product.quantity > 0));
+    console.log(checkIfBasketQuantityIsZero+"here")
+  }, [checkIfBasketQuantityIsZero]);
+
+  useEffect(() => console.table(basket));
 
   return (
     <Router>
