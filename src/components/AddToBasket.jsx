@@ -9,7 +9,11 @@ const AddToBasket = ({ dispatch, productData }) => {
     if (Number(e.target.value) > 0 && Number(e.target.value) < 100) {
       setInputVal(() => Number(e.target.value));
     } else {
-      setInputVal(0);
+      if (inputVal === 0) {
+        setInputVal(Number(e.target.value.split("0")));
+      } else if (/d+|/.test(e.target.value)) {
+        setInputVal(e.target.value);
+      }
     }
   };
 
@@ -27,7 +31,7 @@ const AddToBasket = ({ dispatch, productData }) => {
       </button>
       <input
         className="plusMinusBtn"
-        type="number"
+        type="text"
         value={inputVal}
         onChange={handleInputChange}
       />
@@ -48,7 +52,7 @@ const AddToBasket = ({ dispatch, productData }) => {
           console.log(typeof inputVal);
           dispatch({
             type: actionTypes.ADD,
-            payload: { ...productData, additionalQuantity: inputVal },
+            payload: { ...productData, additionalQuantity: inputVal || 1 },
           });
           setInputVal(() => 0);
         }}
