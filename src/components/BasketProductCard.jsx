@@ -3,7 +3,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { UpdateBasketCardUI } from "./UpdateBasketCardUI";
 
 const BasketProductCard = ({ data, dispatch }) => {
-  console.log(data);
   return (
     <div className="basketProductCard-container">
       <img className="product-image" src={data.imageUrl || ""} />

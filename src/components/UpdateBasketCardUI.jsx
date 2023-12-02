@@ -9,8 +9,6 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
     setQuantity(product.quantity);
   }, [product.quantity]);
 
-  useEffect(() => console.log(product.quantity));
-
   return (
     <div className="product-updateUI">
       <IndeterminateCheckBoxIcon
