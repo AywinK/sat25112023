@@ -7,7 +7,7 @@ import { Home } from "./components/Home";
 import { Basket } from "./components/Basket";
 import { ProductList } from "./components/ProductList";
 import productsData from "./products.json";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import actionTypes from "./components/basketReducerFunctions/actionTypes";
 
 function reducer(state, action) {
@@ -22,15 +22,15 @@ function reducer(state, action) {
 
 function addProductToBasket(state, payload) {
   const alreadyContainsProductInState = state.filter(
-    (productObj) => productObj.id === payload.id
+    (productObj) => productObj.productID === payload.productID
   ).length;
 
   if (alreadyContainsProductInState) {
     return state.reduce((acc, product) => {
-      if (product.id === payload.id) {
+      if (product.productID === payload.productID) {
         acc.push({
-          ...payload,
-          quantity: payload.quantity + payload.additionalQuantity,
+          ...product,
+          quantity: product.quantity + payload.additionalQuantity,
         });
       } else {
         acc.push(product);

@@ -44,8 +44,12 @@ const AddToBasket = ({ dispatch, productData }) => {
       <button
         className="addBtn"
         value={productData.id}
-        onClick={(e) => {
-          dispatch({type:actionTypes.ADD, payload: {...productData, additionalQuantity: inputVal}});
+        onClick={() => {
+          console.log(typeof inputVal);
+          dispatch({
+            type: actionTypes.ADD,
+            payload: { ...productData, additionalQuantity: inputVal },
+          });
           setInputVal(() => 0);
         }}
       >

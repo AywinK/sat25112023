@@ -11,7 +11,7 @@ const testObj = {
 
 const testArr = Array(10).fill(testObj);
 
-const ProductList = ({ productsData, handleBasketClick }) => {
+const ProductList = ({ productsData, dispatch }) => {
   const stylesObj = {
     display: "flex",
     gap: "10px",
