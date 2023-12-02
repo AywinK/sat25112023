@@ -7,9 +7,52 @@ import { Home } from "./components/Home";
 import { Basket } from "./components/Basket";
 import { ProductList } from "./components/ProductList";
 import productsData from "./products.json";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
+
+const actionTypes = {
+  ADD: "ADD",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case actionTypes.ADD:
+      console.log(action.type);
+      return addProductToBasket(state, action.payload);
+    default:
+      return state;
+  }
+}
+
+function addProductToBasket(state, payload) {
+  const alreadyContainsProductInState = state.filter(
+    (productObj) => productObj.id === payload.id
+  ).length;
+
+  if (alreadyContainsProductInState) {
+    return state.reduce((acc, product) => {
+      if (product.id === payload.id) {
+        acc.push({
+          ...payload,
+          quantity: payload.quantity + payload.additionalQuantity,
+        });
+      } else {
+        acc.push(product);
+      }
+      return acc;
+    }, []);
+  }
+  return [
+    ...state,
+    {
+      ...payload,
+      quantity: payload.additionalQuantity,
+      additionalQuantity: 0,
+    },
+  ];
+}
 
 function App() {
+  const [basket, dispatch] = useReducer(reducer, []);
   const [basket, setBasket] = useState([]);
 
   const basketClickHandler = (e, quantity) => {
@@ -45,8 +88,8 @@ function App() {
   }, []).length;
 
   useEffect(() => {
-    setBasket(basket => basket.filter(product => product.quantity > 0));
-    console.log(checkIfBasketQuantityIsZero+"here")
+    setBasket((basket) => basket.filter((product) => product.quantity > 0));
+    console.log(checkIfBasketQuantityIsZero + "here");
   }, [checkIfBasketQuantityIsZero]);
 
   useEffect(() => console.table(basket));
@@ -59,12 +102,14 @@ function App() {
         <Route
           path="/"
           exact
-          element={<Home>
-            <ProductList
-              handleBasketClick={basketClickHandler}
-              productsData={productsData}
-            />
-          </Home>}
+          element={
+            <Home>
+              <ProductList
+                handleBasketClick={basketClickHandler}
+                productsData={productsData}
+              />
+            </Home>
+          }
         />
         <Route path="/basket" exact element={<Basket basket={basket} />} />
       </Routes>
