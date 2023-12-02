@@ -8,9 +8,11 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
 
   const quantityIsZero = quantity === 0;
 
+  useEffect(() => console.log(quantity));
+
   useEffect(() => {
-    setQuantity(product.quantity);
-  }, [quantityIsZero, product.quantity]);
+    setQuantity(() => 1);
+  }, [quantityIsZero]);
 
   return (
     <div className="product-updateUI">
@@ -24,6 +26,7 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
               });
             }
             if (prev > 1) return prev - 1;
+            return prev;
           });
         }}
       >
@@ -60,6 +63,7 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
             }
 
             if (prev < 99) return prev + 1;
+            return prev;
           });
         }}
       >
