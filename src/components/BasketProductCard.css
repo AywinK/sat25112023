@@ -56,13 +56,23 @@
     display: flex;
     grid-area: update;
 
+    > :first-child {
+      margin-right: 10px;
+    }
+
+    > :last-child {
+      margin-left: 10px;
+    }
+
     > :nth-child(2) {
       max-width: 50px;
       border-radius: 10px;
       text-align: center;
     }
 
-    > button {
+    > :first-child,
+    :last-child {
+      cursor: pointer;
       background-color: unset;
       display: flex;
       justify-content: center;

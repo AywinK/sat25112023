@@ -5,70 +5,35 @@ import actionTypes from "./basketReducerFunctions/actionTypes";
 
 const UpdateBasketCardUI = ({ product, dispatch }) => {
   const [quantity, setQuantity] = useState(product.quantity);
-
-  const quantityIsZero = quantity === 0;
-
-  useEffect(() => console.log(quantity));
-
   useEffect(() => {
-    setQuantity(() => 1);
-  }, [quantityIsZero]);
+    setQuantity(product.quantity);
+  }, [product.quantity]);
+
+  useEffect(() => console.log(product.quantity));
 
   return (
     <div className="product-updateUI">
-      <button
+      <IndeterminateCheckBoxIcon
         onClick={() => {
-          setQuantity((prev) => {
-            if (!isNaN(Number(quantity)) && quantity > 1) {
-              dispatch({
-                type: actionTypes.UPDATE_QUANTITY,
-                payload: { ...product, quantity: Number(quantity) - 1 },
-              });
-            }
-            if (prev > 1) return prev - 1;
-            return prev;
-          });
-        }}
-      >
-        <IndeterminateCheckBoxIcon />
-      </button>
-      <input
-        onFocus={() => setQuantity("")}
-        onBlur={(e) => {
-          setQuantity(() => product.quantity);
-          if (!isNaN(Number(quantity)) && quantity) {
+          if (product.quantity > 1) {
             dispatch({
               type: actionTypes.UPDATE_QUANTITY,
-              payload: { ...product, quantity: Number(e.target.value) },
+              payload: { ...product, quantity: product.quantity - 1 },
             });
           }
-          setQuantity(() => Number(e.target.value));
         }}
-        onChange={(e) => {
-          if (!isNaN(Number(e.target.value)) && Number(e.target.value) < 99) {
-            setQuantity(() => Number(e.target.value));
+      />
+      <input type="text" value={quantity} />
+      <AddBoxIcon
+        onClick={() => {
+          if (product.quantity < 99) {
+            dispatch({
+              type: actionTypes.UPDATE_QUANTITY,
+              payload: { ...product, quantity: product.quantity + 1 },
+            });
           }
         }}
-        type="text"
-        value={quantity}
       />
-      <button
-        onClick={() => {
-          setQuantity((prev) => {
-            if (!isNaN(Number(quantity))) {
-              dispatch({
-                type: actionTypes.UPDATE_QUANTITY,
-                payload: { ...product, quantity: Number(quantity) + 1 },
-              });
-            }
-
-            if (prev < 99) return prev + 1;
-            return prev;
-          });
-        }}
-      >
-        <AddBoxIcon />
-      </button>
     </div>
   );
 };

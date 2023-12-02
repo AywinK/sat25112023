@@ -3,7 +3,7 @@ import "./AddToBasket.css";
 import actionTypes from "./basketReducerFunctions/actionTypes";
 
 const AddToBasket = ({ dispatch, productData }) => {
-  const [inputVal, setInputVal] = useState(0);
+  const [inputVal, setInputVal] = useState(1);
 
   const handleInputChange = (e) => {
     if (Number(e.target.value) > 0 && Number(e.target.value) < 100) {
@@ -11,8 +11,8 @@ const AddToBasket = ({ dispatch, productData }) => {
     } else {
       if (inputVal === 0) {
         setInputVal(Number(e.target.value.split("0")));
-      } else if (/d+|/.test(e.target.value)) {
-        setInputVal(e.target.value);
+      } else if (/d+|^[A-Z]|^[a-z]/.test(e.target.value)) {
+        setInputVal(Number(e.target.value));
       }
     }
   };
@@ -22,7 +22,7 @@ const AddToBasket = ({ dispatch, productData }) => {
       <button
         className="plusMinusBtn"
         onClick={() => {
-          if (inputVal > 0) {
+          if (inputVal > 1) {
             setInputVal((prev) => prev - 1);
           }
         }}
@@ -49,12 +49,11 @@ const AddToBasket = ({ dispatch, productData }) => {
         className="addBtn"
         value={productData.id}
         onClick={() => {
-          console.log(typeof inputVal);
           dispatch({
             type: actionTypes.ADD,
             payload: { ...productData, additionalQuantity: inputVal || 1 },
           });
-          setInputVal(() => 0);
+          setInputVal(() => 1 );
         }}
       >
         Add to basket

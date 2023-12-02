@@ -9,9 +9,10 @@ const BasketProductCard = ({ data, dispatch }) => {
       <img className="product-image" src={data.imageUrl || ""} />
       <h2 className="product-title">{data.name}</h2>
       <h3 className="product-price">£{data.price}</h3>
-      <button className="product-deleteBtn">
-        <DeleteIcon />
-      </button>
+      <DeleteIcon
+        className="product-deleteBtn"
+        onClick={() => console.log("delete")}
+      />
       <UpdateBasketCardUI dispatch={dispatch} product={data} />
     </div>
   );
