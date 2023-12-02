@@ -3,28 +3,20 @@ import "./ProductCard.css";
 import { useState } from "react";
 import { AddToBasket } from "./AddToBasket";
 
-const ProductCard = ({
-
-  handleBasketClick, ...productData
-}) => {
-  const { productID,
-    imageUrl,
-    name,
-    price,
-    rating,
-    categoryArr, } = productData;
+const ProductCard = ({ dispatch, ...productData }) => {
+  const { productID, imageUrl, name, price, rating, categoryArr } = productData;
 
   const [product, setProduct] = useState(productData);
 
   const handleReviewRatingChange = (rating) => {
-    setProduct(product => {
+    setProduct((product) => {
       console.table({ ...product, rating });
       return { ...product, rating };
     });
-  }
+  };
 
   // const [reviewRating, setRewviewRating] = useState(rating || 0);
-  // 
+  //
   // const handleReviewRatingChange = (rating) => {
   // setRewviewRating(() => rating);
   // };
@@ -45,10 +37,7 @@ const ProductCard = ({
           rating={product.rating || rating}
         />
         <p className="category">{categoryArr.join(", ")}</p>
-        <AddToBasket
-          handleBasketClick={handleBasketClick}
-          productID={productID}
-        />
+        <AddToBasket dispatch={dispatch} productData={productData} />
       </div>
     </div>
   );

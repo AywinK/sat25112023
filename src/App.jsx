@@ -8,10 +8,7 @@ import { Basket } from "./components/Basket";
 import { ProductList } from "./components/ProductList";
 import productsData from "./products.json";
 import { useEffect, useState, useReducer } from "react";
-
-const actionTypes = {
-  ADD: "ADD",
-};
+import actionTypes from "./components/basketReducerFunctions/actionTypes";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -53,44 +50,6 @@ function addProductToBasket(state, payload) {
 
 function App() {
   const [basket, dispatch] = useReducer(reducer, []);
-  const [basket, setBasket] = useState([]);
-
-  const basketClickHandler = (e, quantity) => {
-    const updatedItemObj = {
-      id: Number(e.target.value),
-      quantity: quantity,
-    };
-    setBasket((prev) => {
-      if (prev.filter((obj) => obj.id === updatedItemObj.id).length) {
-        const updatedArr = prev.reduce((acc, el) => {
-          if (el.id === updatedItemObj.id) {
-            acc.push({
-              id: el.id,
-              quantity: el.quantity + updatedItemObj.quantity,
-            });
-            return acc;
-          }
-          acc.push(el);
-          return acc;
-        }, []);
-        return updatedArr;
-      }
-      return [...prev, updatedItemObj];
-    });
-    console.log(`added to basket, id: ${e.target.value}, ${quantity}`);
-  };
-
-  const checkIfBasketQuantityIsZero = basket.reduce((acc, el) => {
-    if (el.quantity > 0) {
-      acc.push(el);
-    }
-    return acc;
-  }, []).length;
-
-  useEffect(() => {
-    setBasket((basket) => basket.filter((product) => product.quantity > 0));
-    console.log(checkIfBasketQuantityIsZero + "here");
-  }, [checkIfBasketQuantityIsZero]);
 
   useEffect(() => console.table(basket));
 
@@ -104,10 +63,7 @@ function App() {
           exact
           element={
             <Home>
-              <ProductList
-                handleBasketClick={basketClickHandler}
-                productsData={productsData}
-              />
+              <ProductList dispatch={dispatch} productsData={productsData} />
             </Home>
           }
         />

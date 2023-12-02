@@ -31,7 +31,7 @@ const ProductList = ({ productsData, handleBasketClick }) => {
           price={data.price}
           rating={data.rating}
           categoryArr={data.categoryArr}
-          handleBasketClick={handleBasketClick}
+          dispatch={dispatch}
         />
       ))}
     </div>
