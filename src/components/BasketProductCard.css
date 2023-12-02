@@ -1,0 +1,80 @@
+.basketProductCard-container {
+  background-color: blueviolet;
+  /* border: 0.3rem solid red; */
+  border-top: 0.1rem solid red;
+  border-bottom: 0.1rem solid red;
+  display: grid;
+  grid-template-columns: 2fr repeat(5, 1fr);
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
+    "image title title title title price"
+    "image update update placeholder placeholder delete";
+
+  .product-image {
+    grid-area: image;
+    padding: 50px;
+    max-height: 300px;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .product-title {
+    font-size: 0.5em;
+    padding: 20px;
+    grid-area: title;
+    text-align: start;
+  }
+
+  .product-price {
+    padding: 10px;
+    grid-area: price;
+  }
+  .product-deleteBtn {
+    border: unset;
+    background-color: transparent;
+    justify-self: center;
+    align-self: center;
+    height: 50%;
+    width: 50%;
+    grid-area: delete;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:active,
+    &:focus {
+      filter: invert();
+    }
+  }
+
+  .product-updateUI {
+    justify-self: center;
+    align-self: center;
+    padding: 10px;
+    display: flex;
+    grid-area: update;
+
+    > :nth-child(2) {
+      max-width: 50px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    > button {
+      background-color: unset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      width: 50px;
+
+      &:hover {
+        filter: invert();
+        border: unset;
+        scale: unset;
+      }
+    }
+  }
+}

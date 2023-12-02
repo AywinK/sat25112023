@@ -15,9 +15,21 @@ function reducer(state, action) {
     case actionTypes.ADD:
       console.log(action.type);
       return addProductToBasket(state, action.payload);
+    case actionTypes.UPDATE_QUANTITY:
+      return updateProductInBasket(state, action.payload);
     default:
       return state;
   }
+}
+
+function updateProductInBasket(state, payload) {
+  return state.map((product) => {
+    const productQuantityToBeUpdated = product.productID === payload.productID;
+    if (productQuantityToBeUpdated) {
+      return payload;
+    }
+    return product;
+  });
 }
 
 function addProductToBasket(state, payload) {
@@ -67,7 +79,11 @@ function App() {
             </Home>
           }
         />
-        <Route path="/basket" exact element={<Basket basket={basket} />} />
+        <Route
+          path="/basket"
+          exact
+          element={<Basket dispatch={dispatch} basket={basket} />}
+        />
       </Routes>
       <Footer />
     </Router>
