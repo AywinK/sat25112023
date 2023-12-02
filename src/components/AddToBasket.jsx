@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "./AddToBasket.css";
+import actionTypes from "./basketReducerFunctions/actionTypes";
 
-const AddToBasket = ({ handleBasketClick, productID }) => {
+const AddToBasket = ({ dispatch, productData }) => {
   const [inputVal, setInputVal] = useState(0);
 
   const handleInputChange = (e) => {
     if (Number(e.target.value) > 0 && Number(e.target.value) < 100) {
       setInputVal(() => Number(e.target.value));
     } else {
-      setInputVal(0)
+      setInputVal(0);
     }
   };
 
@@ -42,9 +43,13 @@ const AddToBasket = ({ handleBasketClick, productID }) => {
       </button>
       <button
         className="addBtn"
-        value={productID}
-        onClick={(e) => {
-          handleBasketClick(e, inputVal);
+        value={productData.id}
+        onClick={() => {
+          console.log(typeof inputVal);
+          dispatch({
+            type: actionTypes.ADD,
+            payload: { ...productData, additionalQuantity: inputVal },
+          });
           setInputVal(() => 0);
         }}
       >
