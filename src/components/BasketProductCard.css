@@ -1,14 +1,17 @@
 .basketProductCard-container {
-  background-color: blueviolet;
-  /* border: 0.3rem solid red; */
-  border-top: 0.1rem solid red;
-  border-bottom: 0.1rem solid red;
+  background-color: #2f2f2f;
+  border-top: 5px solid #454545;
+  border-radius: 2px;
   display: grid;
   grid-template-columns: 2fr repeat(5, 1fr);
   grid-template-rows: 2fr 1fr;
   grid-template-areas:
     "image title title title title price"
     "image update update placeholder placeholder delete";
+
+  &:last-of-type {
+    border-bottom: 5px solid #454545;
+  }
 
   .product-image {
     grid-area: image;
@@ -29,6 +32,7 @@
     padding: 10px;
     grid-area: price;
   }
+
   .product-deleteBtn {
     border: unset;
     background-color: transparent;
