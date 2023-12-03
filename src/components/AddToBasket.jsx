@@ -1,28 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddToBasket.css";
 import actionTypes from "./basketReducerFunctions/actionTypes";
 
 const AddToBasket = ({ dispatch, productData }) => {
-  const [inputVal, setInputVal] = useState(1);
+  const maxQuantityAllowed = 999;
+  const minQuantityAllowed = 1;
+  const [inputVal, setInputVal] = useState(minQuantityAllowed);
+  const isInputValOutOfBound = inputVal > maxQuantityAllowed || inputVal < minQuantityAllowed;
+  const validInputValRegex = /\d+/;
+
+  useEffect(() => {
+    if (isInputValOutOfBound) setInputVal((prev) => prev > maxQuantityAllowed ? maxQuantityAllowed : minQuantityAllowed);
+  }, [isInputValOutOfBound])
 
   const handleInputChange = (e) => {
-    if (Number(e.target.value) > 0 && Number(e.target.value) < 100) {
-      setInputVal(() => Number(e.target.value));
-    } else {
-      if (inputVal === 0) {
-        setInputVal(Number(e.target.value.split("0")));
-      } else if (/d+|^[A-Z]|^[a-z]/.test(e.target.value)) {
-        setInputVal(Number(e.target.value));
-      }
-    }
+    const inputElVal = e.target.value;
+    const inputElValToNum = Number(inputElVal);
+    const isInputElValValid = validInputValRegex.test(inputElVal);
+    (isInputElValValid && !isInputValOutOfBound && !isNaN(inputElValToNum)) && setInputVal(() => inputElValToNum);
   };
+
+  const handleInputFocus = e => e.target.select();
+
 
   return (
     <div className="addToBasketContainer">
       <button
         className="plusMinusBtn"
         onClick={() => {
-          if (inputVal > 1) {
+          if (inputVal > minQuantityAllowed) {
             setInputVal((prev) => prev - 1);
           }
         }}
@@ -34,10 +40,11 @@ const AddToBasket = ({ dispatch, productData }) => {
         type="text"
         value={inputVal}
         onChange={handleInputChange}
+        onFocus={handleInputFocus}
       />
       <button
         onClick={() => {
-          if (inputVal < 99) {
+          if (inputVal < maxQuantityAllowed) {
             setInputVal((prev) => prev + 1);
           }
         }}
@@ -53,7 +60,7 @@ const AddToBasket = ({ dispatch, productData }) => {
             type: actionTypes.ADD,
             payload: { ...productData, additionalQuantity: inputVal || 1 },
           });
-          setInputVal(() => 1 );
+          setInputVal(() => 1);
         }}
       >
         Add to basket

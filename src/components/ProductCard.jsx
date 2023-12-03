@@ -15,12 +15,6 @@ const ProductCard = ({ dispatch, ...productData }) => {
     });
   };
 
-  // const [reviewRating, setRewviewRating] = useState(rating || 0);
-  //
-  // const handleReviewRatingChange = (rating) => {
-  // setRewviewRating(() => rating);
-  // };
-
   return (
     <div className="product-container">
       <div className="image-container">
