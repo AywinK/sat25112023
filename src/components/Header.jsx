@@ -49,7 +49,7 @@ const Header = ({ basket }) => {
               width: "25px",
               height: "25px",
             }}
-          >{basket.reduce((acc, product) => acc + product.quantity, 0) > 99 ? 99 : basket.reduce((acc, product) => acc + product.quantity, 0)}
+          >{basket.reduce((acc, product) => acc + product.quantity, 0) > 9 ? "9+" : basket.reduce((acc, product) => acc + product.quantity, 0)}
           </span>
         }
       </div>
