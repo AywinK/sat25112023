@@ -11,15 +11,11 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
   const isQuantityOutOfBound = quantity > maxQuantityAllowed || quantity < minQuantityAllowed;
 
   useEffect(() => {
-    setQuantity(product.quantity);
-  }, [product.quantity]);
-
-  useEffect(() => {
     dispatch({
       type: actionTypes.UPDATE_QUANTITY,
-      payload: { ...product, quantity: isQuantityOutOfBound ? (quantity > maxQuantityAllowed) ? maxQuantityAllowed : minQuantityAllowed : quantity },
+      payload: { ...product, quantity: quantity > maxQuantityAllowed ? maxQuantityAllowed : quantity },
     });
-  }, [dispatch, isQuantityOutOfBound, product, quantity])
+  }, [quantity])
 
   const handleInputChange = (e) => {
     const inputElVal = e.target.value;
@@ -29,6 +25,7 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
   };
 
   const handleInputFocus = e => e.target.select();
+  const handleInputBlur = () => setQuantity(product.quantity);
 
   return (
     <div className="product-updateUI">
@@ -43,6 +40,7 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
       <input
         onFocus={handleInputFocus}
         onChange={handleInputChange}
+        onBlur={handleInputBlur}
         type="text" value={quantity} />
       <AddBoxIcon
         onClick={() => {
