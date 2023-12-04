@@ -1,6 +1,7 @@
 import "./BasketProductCard.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UpdateBasketCardUI } from "./UpdateBasketCardUI";
+import actionTypes from "./basketReducerFunctions/actionTypes";
 
 const BasketProductCard = ({ data, dispatch }) => {
   return (
@@ -10,7 +11,7 @@ const BasketProductCard = ({ data, dispatch }) => {
       <h3 className="product-price">£{data.price}</h3>
       <DeleteIcon
         className="product-deleteBtn"
-        onClick={() => console.log("delete")}
+        onClick={() => dispatch({ type: actionTypes.REMOVE_ITEM, payload: data })}
       />
       <UpdateBasketCardUI dispatch={dispatch} product={data} />
     </div>

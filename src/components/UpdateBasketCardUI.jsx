@@ -11,6 +11,7 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
   const isQuantityOutOfBound = quantity > maxQuantityAllowed || quantity < minQuantityAllowed;
 
   useEffect(() => {
+    console.log("here")
     dispatch({
       type: actionTypes.UPDATE_QUANTITY,
       payload: { ...product, quantity: quantity > maxQuantityAllowed ? maxQuantityAllowed : quantity },

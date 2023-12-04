@@ -17,9 +17,15 @@ function reducer(state, action) {
       return addProductToBasket(state, action.payload);
     case actionTypes.UPDATE_QUANTITY:
       return updateProductInBasket(state, action.payload);
+    case actionTypes.REMOVE_ITEM:
+      return removeItemInBasket(state, action.payload);
     default:
       return state;
   }
+}
+
+function removeItemInBasket(state, payload) {
+  return state.filter((product) => product.productID !== payload.productID);
 }
 
 function updateProductInBasket(state, payload) {
