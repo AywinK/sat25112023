@@ -11,7 +11,7 @@ const AddToBasket = ({ dispatch, productData }) => {
 
   useEffect(() => {
     if (isInputValOutOfBound) setInputVal((prev) => prev > maxQuantityAllowed ? maxQuantityAllowed : minQuantityAllowed);
-  }, [isInputValOutOfBound])
+  }, [isInputValOutOfBound]);
 
   const handleInputChange = (e) => {
     const inputElVal = e.target.value;

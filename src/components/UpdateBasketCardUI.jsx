@@ -4,33 +4,54 @@ import { useEffect, useState } from "react";
 import actionTypes from "./basketReducerFunctions/actionTypes";
 
 const UpdateBasketCardUI = ({ product, dispatch }) => {
+  const maxQuantityAllowed = 9999;
+  const minQuantityAllowed = 1;
+  const validQuantityRegex = /\d{1,4}/;
   const [quantity, setQuantity] = useState(product.quantity);
+  const isQuantityOutOfBound = quantity > maxQuantityAllowed || quantity < minQuantityAllowed;
+
   useEffect(() => {
     setQuantity(product.quantity);
   }, [product.quantity]);
+
+  useEffect(() => {
+    dispatch({
+      type: actionTypes.UPDATE_QUANTITY,
+      payload: { ...product, quantity: isQuantityOutOfBound ? (quantity > maxQuantityAllowed) ? maxQuantityAllowed : minQuantityAllowed : quantity },
+    });
+  }, [dispatch, isQuantityOutOfBound, product, quantity])
+
+  const handleInputChange = (e) => {
+    const inputElVal = e.target.value;
+    const inputElValToNum = Number(inputElVal);
+    const isInputElValValid = validQuantityRegex.test(inputElVal);
+    (isInputElValValid && !isQuantityOutOfBound && !isNaN(inputElValToNum)) && setQuantity(() => inputElValToNum);
+  };
+
+  const handleInputFocus = e => e.target.select();
 
   return (
     <div className="product-updateUI">
       <IndeterminateCheckBoxIcon
         onClick={() => {
-          if (product.quantity > 1) {
-            dispatch({
-              type: actionTypes.UPDATE_QUANTITY,
-              payload: { ...product, quantity: product.quantity - 1 },
-            });
-          }
+          setQuantity(prev => {
+            if (prev > minQuantityAllowed) return prev - 1;
+            return minQuantityAllowed;
+          });
         }}
       />
-      <input type="text" value={quantity} />
+      <input
+        onFocus={handleInputFocus}
+        onChange={handleInputChange}
+        type="text" value={quantity} />
       <AddBoxIcon
         onClick={() => {
-          if (product.quantity < 99) {
-            dispatch({
-              type: actionTypes.UPDATE_QUANTITY,
-              payload: { ...product, quantity: product.quantity + 1 },
-            });
-          }
+          setQuantity(prev => {
+            if (prev < maxQuantityAllowed) return prev + 1;
+            return maxQuantityAllowed;
+          });
         }}
+
       />
     </div>
   );

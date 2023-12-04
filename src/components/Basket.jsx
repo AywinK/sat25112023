@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { BasketProductCard } from "./BasketProductCard";
 
 const Basket = ({ basket, dispatch }) => {
