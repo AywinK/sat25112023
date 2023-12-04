@@ -10,7 +10,7 @@ const Basket = ({ basket, dispatch }) => {
           data={product}
           dispatch={dispatch}
         />
-      ))}
+      )).reverse()}
     </div>
   );
 };

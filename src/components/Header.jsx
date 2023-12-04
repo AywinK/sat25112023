@@ -1,6 +1,6 @@
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
-const Header = () => {
+const Header = ({ basket }) => {
   return (
     <header
       style={{
@@ -23,7 +23,36 @@ const Header = () => {
       />
       <button>Accounts & Lists</button>
       <button>Returns & Orders</button>
-      <ShoppingBasketIcon fontSize="large" />
+      <div
+        style={{
+          justifySelf: "center",
+          alignSelf: "center",
+          position: "relative"
+        }}
+      >
+        <ShoppingBasketIcon
+          style={{
+            position: "relative",
+            top: "20%",
+            left: "-50%"
+          }}
+          fontSize="large" />
+        {!!basket.length &&
+          <span
+            style={{
+              position: "absolute",
+              top: "-20%",
+              left: "20%",
+              fontSize: "0.5em",
+              backgroundColor: "red",
+              borderRadius: "50%",
+              width: "25px",
+              height: "25px",
+            }}
+          >{basket.reduce((acc, product) => acc + product.quantity, 0) > 99 ? 99 : basket.reduce((acc, product) => acc + product.quantity, 0)}
+          </span>
+        }
+      </div>
     </header>
   );
 };

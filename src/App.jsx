@@ -73,7 +73,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Header basket={basket} />
       <Navigation />
       <Routes>
         <Route
