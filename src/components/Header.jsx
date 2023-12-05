@@ -44,7 +44,7 @@ const Header = ({ basket }) => {
               top: "-20%",
               left: "20%",
               fontSize: "0.5em",
-              backgroundColor: "red",
+              backgroundColor: "#006666",
               borderRadius: "50%",
               width: "25px",
               height: "25px",
