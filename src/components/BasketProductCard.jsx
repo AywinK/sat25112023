@@ -8,7 +8,7 @@ const BasketProductCard = ({ data, dispatch }) => {
     <div className="basketProductCard-container">
       <img className="product-image" src={data.imageUrl || ""} />
       <h2 className="product-title">{data.name}</h2>
-      <h3 className="product-price">£{data.price}</h3>
+      <h3 className="product-price">£{data.price.toFixed(2)}</h3>
       <DeleteIcon
         className="product-deleteBtn"
         onClick={() => dispatch({ type: actionTypes.REMOVE_ITEM, payload: data })}
