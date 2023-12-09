@@ -22,5 +22,13 @@
     "price": 36.89,
     "rating": 5,
     "categoryArr": ["Technology"]
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://m.media-amazon.com/images/I/91X6Rzd2VvL._SL1500_.jpg",
+    "name": "Guinness World Records 2024",
+    "price": 10.00,
+    "rating": 5,
+    "categoryArr": ["Fun"]
   }
 ]

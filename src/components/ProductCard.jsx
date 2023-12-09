@@ -23,7 +23,7 @@ const ProductCard = ({ dispatch, ...productData }) => {
       </div>
       <p className="price">
         {String(price).split(".")[0]}
-        <span className="price-fraction">{String(price).split(".")[1]}</span>
+        <span className="price-fraction">{String(price).split(".")[1] || "00"}</span>
       </p>
       <div className="bottom-container">
         <Rating
