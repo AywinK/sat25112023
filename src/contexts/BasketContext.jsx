@@ -20,4 +20,4 @@ const BasketContextProvider = ({ children }) => {
     )
 }
 
-export default BasketContextProvider;
+export { BasketContext, BasketContextProvider };

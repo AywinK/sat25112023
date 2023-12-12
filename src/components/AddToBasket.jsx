@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import "./AddToBasket.css";
-import BasketContextProvider from "../contexts/BasketContext";
+import {BasketContext} from "../contexts/BasketContext";
 
 const AddToBasket = ({productData }) => {
 
-  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContext);
 
   const maxQuantityAllowed = 999;
   const minQuantityAllowed = 1;

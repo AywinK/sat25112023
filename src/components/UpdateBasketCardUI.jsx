@@ -1,12 +1,11 @@
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
-import { useEffect, useState } from "react";
-import BasketContextProvider from "../contexts/BasketContext";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import {BasketContext} from "../contexts/BasketContext";
 
 const UpdateBasketCardUI = ({ product }) => {
 
-  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContext);
 
   const maxQuantityAllowed = 9999;
   const minQuantityAllowed = 1;

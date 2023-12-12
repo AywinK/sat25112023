@@ -1,9 +1,9 @@
 import { BasketProductCard } from "./BasketProductCard";
-import BasketContextProvider from "../contexts/BasketContext";
+import {BasketContext} from "../contexts/BasketContext";
 import { useContext } from "react";
 
 const Basket = () => {
-  const { basket } = useContext(BasketContextProvider);
+  const { basket } = useContext(BasketContext);
   return (
     <div>
       <h1>Basket Screen</h1>

@@ -1,12 +1,12 @@
 import "./BasketProductCard.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UpdateBasketCardUI } from "./UpdateBasketCardUI";
-import BasketContextProvider from "../contexts/BasketContext";
+import {BasketContext} from "../contexts/BasketContext";
 import { useContext } from "react";
 
 const BasketProductCard = ({ data }) => {
 
-  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContext);
 
   return (
     <div className="basketProductCard-container">

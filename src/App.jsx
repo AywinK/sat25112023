@@ -8,41 +8,39 @@ import { Basket } from "./components/Basket";
 import { ProductList } from "./components/ProductList";
 import productsData from "./products.json";
 import { useEffect, useContext } from "react";
-import BasketContextProvider from "./contexts/BasketContext";
+import { BasketContext } from "./contexts/BasketContext";
 
 
 
 
 
 function App() {
-  const { basket } = useContext(BasketContextProvider);
+  const { basket } = useContext(BasketContext);
 
   useEffect(() => console.table(basket));
 
   return (
-    <BasketContextProvider>
-      <Router>
-        <Header />
-        <Navigation />
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <Home>
-                <ProductList productsData={productsData} />
-              </Home>
-            }
-          />
-          <Route
-            path="/basket"
-            exact
-            element={<Basket />}
-          />
-        </Routes>
-        <Footer />
-      </Router>
-    </BasketContextProvider>
+    <Router>
+      <Header />
+      <Navigation />
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <Home>
+              <ProductList productsData={productsData} />
+            </Home>
+          }
+        />
+        <Route
+          path="/basket"
+          exact
+          element={<Basket />}
+        />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

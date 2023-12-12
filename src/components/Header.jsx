@@ -1,9 +1,9 @@
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import BasketContextProvider from "../contexts/BasketContext";
+import {BasketContext} from "../contexts/BasketContext";
 import { useContext } from "react";
 
 const Header = () => {
-  const { basket } = useContext(BasketContextProvider);
+  const { basket } = useContext(BasketContext);
   return (
     <header
       style={{
