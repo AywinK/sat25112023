@@ -1,9 +1,13 @@
 import "./BasketProductCard.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UpdateBasketCardUI } from "./UpdateBasketCardUI";
-import actionTypes from "./basketReducerFunctions/actionTypes";
+import BasketContextProvider from "../contexts/BasketContext";
+import { useContext } from "react";
 
-const BasketProductCard = ({ data, dispatch }) => {
+const BasketProductCard = ({ data }) => {
+
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+
   return (
     <div className="basketProductCard-container">
       <img className="product-image" src={data.imageUrl || ""} />
@@ -11,9 +15,9 @@ const BasketProductCard = ({ data, dispatch }) => {
       <h3 className="product-price">£{data.price.toFixed(2)}</h3>
       <DeleteIcon
         className="product-deleteBtn"
-        onClick={() => dispatch({ type: actionTypes.REMOVE_ITEM, payload: data })}
+        onClick={() => basketDispatch({ type: BasketActionTypes.REMOVE_ITEM, payload: data })}
       />
-      <UpdateBasketCardUI dispatch={dispatch} product={data} />
+      <UpdateBasketCardUI product={data} />
     </div>
   );
 };

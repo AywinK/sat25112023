@@ -1,6 +1,9 @@
 import { BasketProductCard } from "./BasketProductCard";
+import BasketContextProvider from "../contexts/BasketContext";
+import { useContext } from "react";
 
-const Basket = ({ basket, dispatch }) => {
+const Basket = () => {
+  const { basket } = useContext(BasketContextProvider);
   return (
     <div>
       <h1>Basket Screen</h1>
@@ -8,7 +11,6 @@ const Basket = ({ basket, dispatch }) => {
         <BasketProductCard
           key={product.productID}
           data={product}
-          dispatch={dispatch}
         />
       )).reverse()}
 

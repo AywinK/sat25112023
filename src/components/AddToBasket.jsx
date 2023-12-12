@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./AddToBasket.css";
-import actionTypes from "./basketReducerFunctions/actionTypes";
+import BasketContextProvider from "../contexts/BasketContext";
 
-const AddToBasket = ({ dispatch, productData }) => {
+const AddToBasket = ({productData }) => {
+
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+
   const maxQuantityAllowed = 999;
   const minQuantityAllowed = 1;
   const [inputVal, setInputVal] = useState(minQuantityAllowed);
@@ -56,8 +59,8 @@ const AddToBasket = ({ dispatch, productData }) => {
         className="addBtn"
         value={productData.id}
         onClick={() => {
-          dispatch({
-            type: actionTypes.ADD,
+          basketDispatch({
+            type: BasketActionTypes.ADD,
             payload: { ...productData, additionalQuantity: inputVal || 1 },
           });
           setInputVal(() => 1);

@@ -1,9 +1,13 @@
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import { useEffect, useState } from "react";
-import actionTypes from "./basketReducerFunctions/actionTypes";
+import BasketContextProvider from "../contexts/BasketContext";
+import { useContext } from "react";
 
-const UpdateBasketCardUI = ({ product, dispatch }) => {
+const UpdateBasketCardUI = ({ product }) => {
+
+  const { basketDispatch, BasketActionTypes } = useContext(BasketContextProvider);
+
   const maxQuantityAllowed = 9999;
   const minQuantityAllowed = 1;
   const validQuantityRegex = /\d{1,4}/;
@@ -12,8 +16,8 @@ const UpdateBasketCardUI = ({ product, dispatch }) => {
 
   useEffect(() => {
     console.log("here")
-    dispatch({
-      type: actionTypes.UPDATE_QUANTITY,
+    basketDispatch({
+      type: BasketActionTypes.UPDATE_QUANTITY,
       payload: { ...product, quantity: quantity > maxQuantityAllowed ? maxQuantityAllowed : quantity },
     });
   }, [quantity])
