@@ -1,5 +1,0 @@
-export default {
-  ADD: "ADD",
-  UPDATE_QUANTITY: "UPDATE QUANTITY",
-  REMOVE_ITEM: "REMOVE ITEM"
-};

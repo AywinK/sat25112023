@@ -11,7 +11,7 @@ const testObj = {
 
 const testArr = Array(10).fill(testObj);
 
-const ProductList = ({ productsData, dispatch }) => {
+const ProductList = ({ productsData }) => {
   const stylesObj = {
     display: "flex",
     gap: "10px",
@@ -31,7 +31,6 @@ const ProductList = ({ productsData, dispatch }) => {
           price={data.price}
           rating={data.rating}
           categoryArr={data.categoryArr}
-          dispatch={dispatch}
         />
       ))}
     </div>

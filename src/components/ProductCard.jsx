@@ -3,7 +3,7 @@ import "./ProductCard.css";
 import { useState } from "react";
 import { AddToBasket } from "./AddToBasket";
 
-const ProductCard = ({ dispatch, ...productData }) => {
+const ProductCard = ({ ...productData }) => {
   const { productID, imageUrl, name, price, rating, categoryArr } = productData;
 
   const [product, setProduct] = useState(productData);
@@ -31,7 +31,7 @@ const ProductCard = ({ dispatch, ...productData }) => {
           rating={product.rating || rating}
         />
         <p className="category">{categoryArr.join(", ")}</p>
-        <AddToBasket dispatch={dispatch} productData={productData} />
+        <AddToBasket productData={productData} />
       </div>
     </div>
   );
