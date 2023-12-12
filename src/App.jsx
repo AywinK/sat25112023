@@ -7,17 +7,13 @@ import { Home } from "./components/Home";
 import { Basket } from "./components/Basket";
 import { ProductList } from "./components/ProductList";
 import productsData from "./products.json";
-import { useEffect, useContext } from "react";
-import { BasketContext } from "./contexts/BasketContext";
 
 
 
 
 
 function App() {
-  const { basket } = useContext(BasketContext);
 
-  useEffect(() => console.table(basket));
 
   return (
     <Router>
